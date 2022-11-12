@@ -1,0 +1,120 @@
+.frame {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: #e9ecef;
+}
+
+#login-signup-container {
+    width: 30vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    background-color: white;
+    margin-left: 5rem;
+}
+
+#login-signup-btn-container {
+   display: flex;
+   justify-content: space-around;
+   align-items: center;
+   width: 100%;
+   padding-top: 2rem;
+   padding-bottom: 1.7rem;
+}
+
+#login-signup-btn-container #login-btn,
+#login-signup-btn-container #signup-btn {
+ width: 40%;  
+ height: 2.4rem;
+ border-radius: 3px;
+ border: none;
+}
+
+.unpressed-color {
+    color: rgba(0,0,0,.55);
+    background-color: #f7f7f7;
+}
+
+.pressed-color {
+    background-color: #e3ebf7;
+    color: #285192;  
+}
+
+
+
+#login-body,#signup-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+}
+
+#signup-body {
+    /* by deafult giving none bacause ast first it is hidden */
+    display: none;
+}
+
+input,#login-user-btn,#signup-user-btn{
+    width: 90%;
+}
+
+input {
+    height: 2.6rem;
+    margin-top: 1rem;
+    border-radius: 3px;
+    padding-left: 10px;
+    outline: none;
+    border: 1px solid rgb(217, 217, 217);
+}
+
+input:focus {
+  border: 2px solid rgb(189, 188, 188);
+}
+
+#login-username-input {
+   margin-top: 1.7rem;
+}
+
+#login-user-btn,#signup-user-btn {
+    margin-top: 2rem;
+}
+
+#signup-user-btn {
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
+}
+
+
+#forgot-pass-container {
+    height: 3rem;
+   width: 100%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   color: blueviolet;
+   margin-bottom: 1.7rem;
+}
+
+#forgot-pass-container span {
+    cursor: pointer;
+}
+
+
+#backgroud-image-container {
+    width: 50%;
+    height: 500px;
+    background-image: url('/login-signup-files/img3.jpg');
+    background-color: #000000;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    object-fit: contain;
+    border-radius: 10px;
+}

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/login-signup-files/login-signup.css" />
+  <link rel="stylesheet" href="/login-signup-files/forgot-password.css" />
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="frame">
+
+    <div id = 'backgroud-image-container'>
+      
+    </div>
+    <div id="login-signup-container">
+      <div id="login-signup-btn-container">
+        <button id="login-btn" class="pressed-color">login</button>
+        <button id="signup-btn" class="unpressed-color">Register</button>
+      </div>
+      <div id="login-body">
+        <input type="text" id="login-userid-input" placeholder="UserID" />
+
+        <input type="text" id="login-password-input" placeholder="Password" />
+
+        <button type="button" class="btn btn-primary" id="login-user-btn">
+          <span class="spinner-border spinner-border-sm visually-hidden" id="login-loading-circle" role="status"></span>
+          <span class="">login</span>
+        </button>
+        <div id="forgot-pass-container">
+          <span id="forgot-password">Forgot password ?</span>
+        </div>
+      </div>
+      <div id="signup-body">
+        <input type="text" id="signup-username-input" placeholder="Username" />
+
+        <input type="password" id="signup-password-input" placeholder="Password" />
+
+        <input type="password" id="signup-confirm-password-input" placeholder="confirm password" />
+
+        <input type="text" id="signup-userid-input" placeholder="UserID" />
+
+        <input type="email" id="signup-email-input" placeholder="email" />
+
+        <button type="button" class="btn btn-primary" id="signup-user-btn">
+          <span class="spinner-border spinner-border-sm visually-hidden" id="signup-loading-circle"
+            role="status"></span>
+          <span class="">signup</span>
+        </button>
+      </div>
+    </div>
+
+    <div id="forgot-password-container">
+      <h1>Reset password</h1>
+      <div id="forgot-password-input-box">
+        <input type="text" id="fgt-userid-input" placeholder="UserId" />
+        <input type="text" id="fgt-pass-input" placeholder="password" />
+        <input type="text" id="fgt-confirm-pass-input" placeholder="confirm password" />
+        <input type="text" id="fgt-opt-input" placeholder="OPT" />
+      </div>
+      <div id="forgot-password-btn-box">
+        <!-- <button type="button" class="btn btn-primary">Submit OPT</button> -->
+        <button class="btn btn-primary" type="button" id="fgt-cmn-btn">
+          <span class="spinner-border visually-hidden spinner-border-sm" role="status" aria-hidden="true"
+            id="forgot-spinner"></span>
+          <span class="sr-only">Send OTP</span>
+        </button>
+      </div>
+      <!-- <div id = 'fgt-timer-container'>
+                     <span id = 'fgt-time-span'>Timer : 05:30</span>
+               </div> -->
+    </div>
+  </div>
+  <!-- user created toast -->
+  <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+    <div class="toast hide" role="alert" aria-live="assertive" aria-atomic="true" id="my-user-toast">
+      <div class="toast-header">
+        <!-- <img src="..." class="rounded me-2" alt="..."> -->
+        <strong class="me-auto">Chat app</strong>
+        <!-- <small>11 mins ago</small> -->
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+      <div class="toast-body" id='cmn-toast'>New user has been created</div>
+    </div>
+  </div>
+  <script defer src="/login-signup-files/login-signup.js"></script>
+</body>
+
+</html>

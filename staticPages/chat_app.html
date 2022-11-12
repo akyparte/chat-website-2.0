@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>chat app - Bootdey.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" rel="stylesheet"> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/chat-app-files/chat-app-style.css">
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+
+<div class="container-fluid">
+<div class="row clearfix sub-container1">
+    <div class="col-lg-12 sub-container2">
+        <div class="card chat-app">
+            <div id="plist" class="people-list">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id = 'search-friend'>
+                            <!-- <i class="fa fa-search"></i> -->
+                            <i class="bi bi-arrow-left"></i>
+                        </span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="Search...">
+                </div>
+                <ul class="list-unstyled chat-list mt-2 mb-0" id  = 'friend-list-container'>
+                    <!-- <li class="clearfix">
+                        <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="avatar">
+                        <div class="about">
+                            <div class="name">Vincent Porter</div>
+                            <div class="status"> <i class="fa fa-circle offline"></i> left 7 mins ago </div>                                            
+                        </div>
+                        <div class="my-badge">5</div>
+                    </li> -->
+
+                    <!-- <li class="clearfix active">
+                        <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="avatar">
+                        <div class="about">
+                            <div class="name">Aiden Chavez Aiden Chavez</div>
+                            <div class="status"> <i class="fa fa-circle online"></i> online </div>
+                        </div>
+                        <div class="badge">999</div>
+                    </li> -->
+                   
+                </ul>
+            </div>
+            <div class="chat" id = 'chat-message-header-container' style="display: none;">
+                <div class="chat-header clearfix">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <a href="javascript:void(0);" data-toggle="modal" data-target="#view_info" id = 'selected-fri-pro-pic'>
+                                <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="avatar">
+                            </a>
+                            <div class="chat-about">
+                                <h6 class="m-b-0" id = 'selected-fri-username'>Aiden Chavez</h6>
+                                <small id = 'selected-fri-status'>Last seen: 2 hours ago</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="chat-history">
+                    <ul class="m-b-0 message-list" id = 'message-container'>
+
+                        <!--   my message html comes here -->
+                        <li class="clearfix">
+                            <div class="message-data text-end">
+                                <span class="message-data-time">10:10 AM, Today</span>
+                            </div>
+                            <div class="message my-message float-right"> 
+                                <span>
+                                    Hi Aiden, how are you? How is the project coming along? can you share that 
+                                </span>
+                                <i class="bi bi-check2 message-check"></i>
+                                <!-- <i class="bi bi-check2-all message-check"></i> -->
+                            </div>    
+                        </li>
+                        <!-- =================================== -->
+
+                         <!--   my message html comes here -->
+                         <!-- <li class="clearfix">
+                            <div class="message-data text-end">
+                                <span class="message-data-time">10:10 AM, Today</span>
+                            </div>
+                            <div class="message friend-message float-right"> 
+                                <span>
+                                    Hi Aiden, how are you? How is the project coming along? can you share that story you gt on the side of the alak
+                                </span>
+                              <i class="fa fa-thin fa-check message-check-seen"></i>
+                            </div>    
+                        </li> -->
+                        <!-- =================================== -->
+
+                         <!--   my message html comes here -->
+                         <!-- <li class="clearfix">
+                            <div class="message-data text-end">
+                                <span class="message-data-time">10:10 AM, Today</span>
+                            </div>
+                            <div class="message my-message float-right"> 
+                                <span>
+                                    Hi Aiden, how are you? How is the project coming along? can you share that story you gt on the side of the alak
+                                </span>
+                              <i class="fa fa-thin fa-check message-check-seen"></i>
+                            </div>    
+                        </li> -->
+                        <!-- =================================== -->
+
+
+                        <!-- friend's message comes here -->
+                        <li class="clearfix">
+                            <div class="message-data">
+                                <span class="message-data-time">10:12 AM, Today</span>
+                            </div>
+                            <div class="message my-message">
+                               <span> Are we meeting today? because </span>
+                            </div>                                    
+                        </li>
+                        <!-- ===================================== -->
+
+                        <!-- my file message comes here -->
+                        <!-- <li class="clearfix">
+                            <div class="message-data text-end">
+                                <span class="message-data-time">10:12 AM, Today</span>
+                            </div>
+                            <div class="file-message my-message float-right">
+                                <div class="file-info">
+                                    <span>gta ity pdf file.txt</span>
+
+                                    <div class="progress-container">
+                                        <div class="circular-progress">
+                                             <div class="value-progress-container">
+                                                <i class="fa fa-solid fa-arrow-up" style="display: none;"></i>
+                                                <i class="bi bi-x-lg"></i>
+                                             </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                              <div class="file-status-me">
+                                  <span class="file-size-me ">100 kb</span>
+                                  <i class="bi bi-check2" style="color: rgb(81, 154, 255);font-size: 1.2rem;"></i>
+                                   <i class="bi bi-check2-all" style="color: rgb(81, 154, 255);font-size: 1.2rem;"></i>
+                              </div>
+                            </div>
+                        </li> -->
+                        <!-- =========================== -->
+
+                        <!-- friends file message comes here -->
+                        <!-- <li class="clearfix">
+                            <div class="message-data">
+                                <span class="message-data-time">10:12 AM, Today</span>
+                            </div>
+                            <div class="file-message friend-message float-left">
+                                <div class="file-info fri-file-info">
+                                    <span>gta ity pdf file.txt</span>
+                                </div>
+
+                              <div class="file-size-fri">
+                                  <span>100 kb</span>
+                              </div>
+                            </div>
+                        </li> -->
+                        <!-- ================================== -->
+
+                    </ul>
+                </div>
+                <div  class="chat-message clearfix">
+
+                    <div id = 'send-mesage-container'>
+                       
+                        <div id = 'send-message-input-grp'>
+                            <input type="text" id = 'send-message-input'>
+                            <i class="bi bi-paperclip"></i>
+                        </div>
+                        <button id = 'send-message-btn'>  Send   </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<div id = 'global-buttons'>
+    <button class="btn btn-outline-secondary">Dark</button>
+    <button class="btn btn-outline-primary" type="button" data-bs-toggle="modal" data-bs-target="#myprofilemodal" aria-controls="myprofilemodal">Profile</button>
+    <button class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#search-friend-modal">Add user</button>
+</div>
+
+<!-- offcanvas profile show -->
+<!-- <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Toggle right offcanvas</button> -->
+
+<div class="offcanvas offcanvas-end" tabindex="2" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasRightLabel">Profile</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+     <div id = 'friend-profile-card'>
+        <div id = 'friend-pro-img-container' class="circle">
+            <img src="./bal.jfif" alt="">
+        </div>
+     </div>
+  </div>
+</div>
+<!-- ---------------------- -->
+
+<!-- ---search modal -->
+  <!-- Modal -->
+  <div class="modal fade" id="search-friend-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">   
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Add a Friend</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id = 'search-user-close-cross-btn'></button>
+        </div>
+        <div class="modal-body">
+            <div class="input-group">
+                <button type="button" class="btn btn-primary" id = 'search-userid-username-filter'>User id</button>
+                <input type="text" class="form-control" placeholder="Search..." style="margin-left:6px" id = 'search-friend-input'>
+                <!-- <div class="input-group-prepend"> -->
+                    <!-- <span class="input-group-text" id = 'search-add-friend'> -->
+                        <!-- <i class="fa fa-search"></i> -->
+                        <!-- <i class="bi bi-search"></i> -->
+                    <!-- </span> -->
+
+                <!-- </div> -->
+            </div>
+            <div id = 'search-result-box'>
+
+               <!-- <div class="search-user-box">
+                   <div class="name-id-box">
+                       <h1>akshay parte Lorem ipsum dolor sit.</h1>
+                       <span>aky7895fgpmaefnfjc fnrid 356fj</span>
+                   </div>
+                   <div class="search-user-profile">
+                   </div>
+               </div> -->
+               <!-- <div class="search-user-box">
+                <div class="name-id-box">
+                    <h1>akshay parte Lorem ipsum dolor sit.</h1>
+                    <span>aky7895fgpmaefnfjc fnrid 356fj</span>
+                </div>
+                <div class="search-user-profile">
+                </div>
+            </div> -->
+<!-- 
+               <div id = 'no-users-found' style="display: none;">
+                   No Users Found !!
+               </div> -->
+
+
+               <!-- <div class="text-center" id = 'search-user-spinner'>
+                <div class="spinner-border" role="status">
+                </div>
+              </div> -->
+
+            </div>  
+
+               
+        </div>
+        <div class="modal-footer" id = 'search-user-modal-footer'>
+                <!-- <button class="btn btn-primary" type="button" disabled id = 'search-user-modal-add-btn'>
+                    <span class="spinner-border spinner-border-sm hide" role="status" aria-hidden="true"></span>
+                    Add User
+                  </button> -->
+
+                  <!-- <button class="btn btn-primary" type="button" disabled id = 'search-user-modal-add-btn'>
+                    <span class="spinner-border spinner-border-sm visually-hidden" role="status" aria-hidden="true"></span>
+                    <span class="visuallu-hidden"> Adding...</span>
+                    <span> Add a Friend</span>
+                  </button> -->
+                  
+                  <button class="btn btn-primary" type="button" id = 'search-user-modal-add-btn'>
+                    <span class="spinner-border spinner-border-sm visually-hidden" role="status" aria-hidden="true"></span>
+                    <span>Add a Friend</span>
+                    <span class="visually-hidden">Adding...</span>
+                  </button>
+
+
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id = 'search-user-close-btn'>Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ------------------------------------- -->
+
+
+
+   <!-- toaster to show warning -->
+ <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" id = 'my-toast'>
+    <div class="toast-header">
+      <strong class="me-auto">Warning !!!</strong>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body" id = 'my-toast-body'>
+      No changes found
+    </div>
+  </div>
+ <!-- --------- -->
+
+  <!-- my profile modal -->
+  
+  <!-- Modal -->
+  <div class="modal fade" id="myprofilemodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" id = "my-pro-modal-dialog">
+      <div class="modal-content" id = 'my-pro-box'>
+        <div class="modal-header" id = 'my-pro-modal-header'>
+          <h5 class="modal-title" id="exampleModalLabel">User Profile</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id = 'my-profile-modal-body'>
+            <div class="container">
+                <div class="main-body">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="card profile-card">
+                                <div class="card-body">
+                                    <div class="d-flex flex-column align-items-center text-center">
+                                        <!-- <img src="./pro.jpeg" id="profile-image"> -->
+                                        <div id="profile-image"></div>
+                                        <div class="mt-3">
+                                            <h4>John Doe</h4>
+                                    
+                                            <!-- <button class="btn btn-outline-primary" id = 'my-pro-picture-edit-btn'>
+                                                <div class="spinner-border" role="status">  </div>
+                                                Edit profile picture
+                                            </button> -->
+
+                                            <button class="btn btn-primary" type="button" id = 'my-pro-picture-edit-btn'>
+                                                <span class="spinner-border spinner-border-sm visually-hidden" role="status" aria-hidden="true"></span>
+                                                <span>Edit profile picture</span>
+                                                <span class="visually-hidden">Updating...</span>
+                                              </button>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="card profile-card user-info-card" id = 'my-pro-info-container'>
+                                <div class="card-body user-info">
+                                    <div class="row mb-3">
+                                        <div class="col-sm-3">
+                                            <h6 class="mb-0">Username</h6>
+                                        </div>
+                                        <div class="col-sm-9 text-secondary">
+                                            <input type="text" class="form-control" id = 'my-pro-username'>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col-sm-3">
+                                            <h6 class="mb-0">Userid</h6>
+                                        </div>
+                                        <div class="col-sm-9 text-secondary">
+                                            <input type="text" class="form-control" disabled id = 'my-pro-userid'>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col-sm-3">
+                                            <h6 class="mb-0">email</h6>
+                                        </div>
+                                        <div class="col-sm-9 text-secondary">
+                                            <input type="text" class="form-control" id = 'my-pro-email'>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col-sm-3">
+                                            <h6 class="mb-0">Password</h6>
+                                        </div>
+                                        <div class="col-sm-9 text-secondary">
+                                            <input type="password" class="form-control" id = 'my-pro-password'>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="row mb-3">
+                                        <div class="col-sm-3">
+                                            <h6 class="mb-0">Address</h6>
+                                        </div>
+                                        <div class="col-sm-9 text-secondary">
+                                            <input type="text" class="form-control" value="Bay Area, San Francisco, CA" disabled>
+                                        </div>
+                                    </div> -->
+                                    <div class="row">
+                                        <div class="col-sm-3"></div>
+                                        <div class="col-sm-9 text-secondary">
+                                            <!-- <input type="button" class="btn btn-primary px-4" value="Save Changes"> -->
+
+                                            <button class="btn btn-primary" type="button" id = 'profile-info-save-changes-btn'>
+                                                <span class="spinner-border spinner-border-sm visually-hidden" role="status" aria-hidden="true"></span>
+                                                <span>Save changes</span>
+                                                <span class="visually-hidden">Saving Changes...</span>
+                                              </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+        
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ------------------------- -->
+
+
+
+
+  <!-- page loader -->
+
+  <div id = 'page-loader'>
+         <h1> loading appliation</h1>
+         <div class="progress">
+            <div class="progress-bar" role="progressbar" id = 'site-loading-progress'></div>
+        </div>
+  </div>
+
+  <!-- ------------------- -->
+
+
+  <!-- profile image show container -->
+    <div id = 'full-pro-img-container' style="display: none;">
+       <div id ='full-pro-close-btn-cnt'>
+        <button type="button" class="btn-close" id = 'full-pro-close-btn' aria-label="Close"></button>
+       </div>
+
+       <img src="" alt="" id = 'full-pro-img'>
+    </div>
+
+  <!-- ---------------------------- -->
+
+<script defer type="text/javascript" src="/chat-app-files/chat-app-script.js">
+</script>
+</body>
+</html>

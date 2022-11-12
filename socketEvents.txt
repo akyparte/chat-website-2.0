@@ -1,0 +1,40 @@
+
+ [ send-message ]  =>  will be fired(emited) by client(in browser) and listened by server 
+         
+ [ send-ms-to-clnt ] =>  will be fired(emited) by server and listened by client(in browser) 
+
+ [ make-fri-actv ]  => will be fired by client to let server know with user is chatting      
+
+ [ msg-rcd-to-clnt-cnfrm ]  => will be fired by client to let server know that it has received the message
+
+
+
+
+
+ [ snd-ms ] => [send-message]
+ [ ms-rcd-to-svr ] => [message-received-to-server]
+
+ [ svr-sdg-ms-to-frd ] => [server-sending-message-to-friend]
+ [ ms-rcd-to-frd ] => [message-received-to-friend]
+
+ [ svr-sdg-cnfrm-to-usr ] => [server-sending-confirmation-to-user]
+
+
+ #step 1
+
+ ( snd-ms ) will be fired by user(from browser) and listened by server. when user is sending message to his friend
+ 
+ ( ms-rcd-to-svr ) wll be fired by server and listened by user. when server is informing user that his message reached to server
+
+ #step 2
+
+ ( svr-sdg-ms-to-frd ) will be fired by server and listened by friend( browser ). when server is sending user's message to his friend
+
+ ( ms-rcd-to-frd ) will be fired by friend( browser ) and listened by server . when friend is informing server that he received message
+
+ #step 3
+
+ ( svr-sdg-cnfrm-to-usr ) will be fired by server and listened by user ( browser ). when user has to show 2 tick on screen about message reached to friend
+
+
+
